@@ -1,0 +1,42 @@
+<div>
+	<a href="/users">Users statistic</a> > <span>{{username}}</span>
+</div>
+<mat-form-field>
+  <mat-label>Start date</mat-label>
+  <input matInput [matDatepicker]="startPicker" (dateInput)="onChange($event, 'start')">
+  <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+  <mat-datepicker #startPicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>End date</mat-label>
+  <input matInput [matDatepicker]="endPicker" (dateInput)="onChange($event, 'end')">
+  <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+  <mat-datepicker #endPicker></mat-datepicker>
+</mat-form-field>
+<button mat-stroked-button (click)="getUserStatisticByDate()">Select</button>
+<h1>{{username}}</h1>
+<div class="chart-wrapper">
+	<h2>Clicks</h2>
+    <canvas baseChart 
+        [datasets]="clicksChartData" 
+        [labels]="clicksChartLabels" 
+        [options]="clicksChartOptions"
+        [colors]="clicksChartColors" 
+        [legend]="clicksChartLegend" 
+        [chartType]="clicksChartType" 
+        [plugins]="clicksChartPlugins">
+    </canvas>
+    <h2>Views</h2>
+    <canvas baseChart 
+        [datasets]="viewsChartData" 
+        [labels]="viewsChartLabels" 
+        [options]="viewsChartOptions"
+        [colors]="viewsChartColors" 
+        [legend]="viewsChartLegend" 
+        [chartType]="viewsChartType" 
+        [plugins]="viewsChartPlugins">
+    </canvas>
+</div>
+
+
+
